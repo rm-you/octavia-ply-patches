@@ -1,0 +1,22 @@
+From ply Mon Sep 17 00:00:00 2001
+From: Adam Harwell <flux.adam@gmail.com>
+Date: Thu, 8 Dec 2016 10:33:20 -0800
+Subject: Print image filename before creation
+
+Change-Id: If297cbedc07c389936891d1c3803524bf9ceafba
+
+diff --git a/diskimage-create/diskimage-create.sh b/diskimage-create/diskimage-create.sh
+index 768034b..7997b97 100755
+--- a/diskimage-create/diskimage-create.sh
++++ b/diskimage-create/diskimage-create.sh
+@@ -396,6 +396,7 @@ if [ "$AMP_BASEOS" = "ubuntu" ]; then
+     export DIB_CLOUD_INIT_DATASOURCES=$CLOUD_INIT_DATASOURCES
+ fi
+ 
++echo "Creating an image: $AMP_OUTPUTFILENAME.$AMP_IMAGETYPE"
+ disk-image-create -a $AMP_ARCH -o $AMP_OUTPUTFILENAME -t $AMP_IMAGETYPE --image-size $AMP_IMAGESIZE --image-cache $AMP_CACHEDIR $AMP_element_sequence
+ 
+ popd > /dev/null # out of $TEMP
+-- 
+1.8.3
+
